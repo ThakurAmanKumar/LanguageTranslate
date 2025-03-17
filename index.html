@@ -1,0 +1,1026 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online language translator tool. Instantly translate text, documents, and images into multiple languages with high accuracy. Support for PDF, Word files, and image translation.">
+    <meta name="keywords" content="language translator, text translator, document translation, OCR text extractor, translate PDF, translate Word file, image to text, free translation, online translator, multilingual translation, professional translation tool">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="LinguaTranslate">
+    <meta property="og:title" content="LinguaTranslate - Professional Language Translation Tool">
+    <meta property="og:description" content="Free professional translation tool for text, PDFs, Word documents, and images. Translate into multiple languages instantly with high accuracy.">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LinguaTranslate - Professional Language Translation Tool">
+    <meta name="twitter:description" content="Free professional translation tool for text, PDFs, Word documents, and images. Translate into multiple languages instantly.">
+    <link rel="canonical" href="https://yourwebsite.com">
+    <title>Language Translate - Free Online Language Translator for Text, PDFs, and Images</title>
+</head>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,0..200" rel="stylesheet" />
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #7209b7;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --success: #38b000;
+            --border-radius: 12px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            padding: 20px;
+            transition: var(--transition);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .logo-icon {
+            font-size: 36px;
+            color: var(--primary);
+            margin-right: 10px;
+        }
+
+        h1 {
+            color: var(--dark);
+            font-weight: 700;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--gray);
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .translator-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .translator-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .input-section, .output-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 18px;
+        }
+
+        .section-title .material-symbols-rounded {
+            margin-right: 8px;
+            color: var(--primary);
+        }
+
+        textarea {
+            width: 100%;
+            height: 180px;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            resize: none;
+            transition: var(--transition);
+            background: white;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+
+        .file-upload {
+            position: relative;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .file-upload-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            background: #f0f2f5;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px dashed #d0d5dd;
+        }
+
+        .file-upload-label:hover {
+            background: #e4e8f0;
+        }
+
+        .file-upload-label span {
+            margin-left: 8px;
+        }
+
+        .file-upload input[type="file"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .language-selector {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .language-selector label {
+            margin-right: 10px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        select {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            background: white;
+            transition: var(--transition);
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236c757d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 16px;
+            padding-right: 40px;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+        }
+
+        .btn-secondary {
+            background: #f0f2f5;
+            color: var(--dark);
+        }
+
+        .btn-secondary:hover {
+            background: #e4e8f0;
+            transform: translateY(-2px);
+        }
+
+        .btn .material-symbols-rounded {
+            margin-right: 8px;
+            font-size: 20px;
+        }
+
+        .translate-btn {
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .action-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(67, 97, 238, 0.2);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            background: var(--success);
+            color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .notification .material-symbols-rounded {
+            margin-right: 10px;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .theme-toggle .material-symbols-rounded {
+            font-size: 24px;
+        }
+
+        body.dark-mode {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+        }
+
+        .dark-mode .container {
+            background: #0f3460;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .dark-mode h1, .dark-mode .section-title {
+            color: white;
+        }
+
+        .dark-mode .subtitle {
+            color: #a0a0a0;
+        }
+
+        .dark-mode textarea, .dark-mode select {
+            background: #16213e;
+            color: white;
+            border-color: #2a4b8d;
+        }
+
+        .dark-mode .file-upload-label {
+            background: #16213e;
+            border-color: #2a4b8d;
+            color: white;
+        }
+
+        .dark-mode .btn-secondary {
+            background: #16213e;
+            color: white;
+        }
+
+        .dark-mode .btn-secondary:hover {
+            background: #1f305a;
+        }
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .footer-links a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        .dark-mode .footer {
+            color: #a0a0a0;
+        }
+
+        .dark-mode .footer-links a {
+            color: #7da9ff;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .theme-toggle {
+                top: auto;
+                bottom: 20px;
+                right: 20px;
+                transform: none;
+            }
+            
+            .theme-toggle:hover {
+                transform: scale(1.1);
+            }
+        }
+
+        .language-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .feature-description {
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        .dark-mode .feature-card {
+            background: #16213e;
+        }
+
+        .dark-mode .feature-title {
+            color: white;
+        }
+
+        .dark-mode .feature-description {
+            color: #a0a0a0;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: white;
+            padding: 8px 16px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <div class="theme-toggle" onclick="toggleDarkMode()" aria-label="Toggle dark mode">
+        <span class="material-symbols-rounded" id="themeIcon">dark_mode</span>
+    </div>
+
+    <main id="main-content" class="container">
+        <header class="header">
+            <div class="logo">
+                <span class="material-symbols-rounded logo-icon" aria-hidden="true">translate</span>
+                <h1>Language Translate</h1>
+            </div>
+            <p class="subtitle">Instantly translate text, documents, and images into multiple languages</p>
+        </header>
+
+        <section class="language-features">
+            <div class="feature-card">
+                <span class="material-symbols-rounded feature-icon" aria-hidden="true">description</span>
+                <h2 class="feature-title">Document Translation</h2>
+                <p class="feature-description">Translate PDF, Word, and text documents with high accuracy</p>
+            </div>
+            <div class="feature-card">
+                <span class="material-symbols-rounded feature-icon" aria-hidden="true">image</span>
+                <h2 class="feature-title">Image Translation</h2>
+                <p class="feature-description">Extract and translate text from images and screenshots</p>
+            </div>
+            <div class="feature-card">
+                <span class="material-symbols-rounded feature-icon" aria-hidden="true">language</span>
+                <h2 class="feature-title">Multiple Languages</h2>
+                <p class="feature-description">Support more than 100 languages worldwide</p>
+            </div>
+        </section>
+
+        <div class="translator-container">
+            <div class="input-section">
+                <div class="section-title">
+                    <span class="material-symbols-rounded" aria-hidden="true">edit_document</span>
+                    Source Text
+                </div>
+                <textarea id="inputText" placeholder="Enter text to translate..." aria-label="Source text to translate"></textarea>
+                
+                <div class="file-upload">
+                    <label class="file-upload-label">
+                        <span class="material-symbols-rounded" aria-hidden="true">upload_file</span>
+                        <span>Upload document or image</span>
+                        <input type="file" id="fileInput" accept=".pdf, .doc, .docx, .png, .jpg, .jpeg" aria-label="Upload file for translation">
+                    </label>
+                </div>
+                
+                <div class="language-selector">
+                    <label for="targetLanguage">Translate to:</label>
+                    <select id="targetLanguage" aria-label="Select target language">
+                        <option value="af">Afrikaans</option>
+                        <option value="sq">Albanian</option>
+                        <option value="ar">Arabic</option>
+                        <option value="hy">Armenian</option>
+                        <option value="az">Azerbaijani</option>
+                        <option value="eu">Basque</option>
+                        <option value="bn">Bengali</option>
+                        <option value="bs">Bosnian</option>
+                        <option value="ca">Catalan</option>
+                        <option value="hr">Croatian</option>
+                        <option value="cs">Czech</option>
+                        <option value="da">Danish</option>
+                        <option value="nl">Dutch</option>
+                        <option value="en">English</option>
+                        <option value="eo">Esperanto</option>
+                        <option value="et">Estonian</option>
+                        <option value="tl">Filipino</option>
+                        <option value="fi">Finnish</option>
+                        <option value="fr">French</option>
+                        <option value="gl">Galician</option>
+                        <option value="ka">Georgian</option>
+                        <option value="de">German</option>
+                        <option value="el">Greek</option>
+                        <option value="gu">Gujarati</option>
+                        <option value="ht">Haitian Creole</option>
+                        <option value="ha">Hausa</option>
+                        <option value="haw">Hawaiian</option>
+                        <option value="he">Hebrew</option>
+                        <option value="hi">Hindi</option>
+                        <option value="hu">Hungarian</option>
+                        <option value="is">Icelandic</option>
+                        <option value="ig">Igbo</option>
+                        <option value="id">Indonesian</option>
+                        <option value="ga">Irish</option>
+                        <option value="it">Italian</option>
+                        <option value="ja">Japanese</option>
+                        <option value="jw">Javanese</option>
+                        <option value="kn">Kannada</option>
+                        <option value="kk">Kazakh</option>
+                        <option value="km">Khmer</option>
+                        <option value="ko">Korean</option>
+                        <option value="ku">Kurdish</option>
+                        <option value="ky">Kyrgyz</option>
+                        <option value="lo">Lao</option>
+                        <option value="la">Latin</option>
+                        <option value="lv">Latvian</option>
+                        <option value="lt">Lithuanian</option>
+                        <option value="lb">Luxembourgish</option>
+                        <option value="mk">Macedonian</option>
+                        <option value="mg">Malagasy</option>
+                        <option value="ml">Malayalam</option>
+                        <option value="ms">Malay</option>
+                        <option value="mt">Maltese</option>
+                        <option value="mi">Maori</option>
+                        <option value="mr">Marathi</option>
+                        <option value="mn">Mongolian</option>
+                        <option value="my">Myanmar (Burmese)</option>
+                        <option value="ne">Nepali</option>
+                        <option value="no">Norwegian</option>
+                        <option value="or">Odia</option>
+                        <option value="ps">Pashto</option>
+                        <option value="fa">Persian</option>
+                        <option value="pl">Polish</option>
+                        <option value="pt">Portuguese</option>
+                        <option value="pa">Punjabi</option>
+                        <option value="ro">Romanian</option>
+                        <option value="ru">Russian</option>
+                        <option value="sr">Serbian</option>
+                        <option value="si">Sinhalese</option>
+                        <option value="sk">Slovak</option>
+                        <option value="sl">Slovenian</option>
+                        <option value="es">Spanish</option>
+                        <option value="su">Sundanese</option>
+                        <option value="sw">Swahili</option>
+                        <option value="sv">Swedish</option>
+                        <option value="tl">Tagalog</option>
+                        <option value="ta">Tamil</option>
+                        <option value="te">Telugu</option>
+                        <option value="th">Thai</option>
+                        <option value="tr">Turkish</option>
+                        <option value="uk">Ukrainian</option>
+                        <option value="ur">Urdu</option>
+                        <option value="vi">Vietnamese</option>
+                        <option value="cy">Welsh</option>
+                        <option value="xh">Xhosa</option>
+                        <option value="yi">Yiddish</option>
+                        <option value="zu">Zulu</option>
+                        <option value="am">Amharic</option>
+                        <option value="ba">Bashkir</option>
+                        <option value="be">Belarusian</option>
+                        <option value="bn">Bengali</option>
+                        <option value="bs">Bosnian</option>
+                        <option value="ca">Catalan</option>
+                        <option value="ce">Chechen</option>
+                        <option value="ch">Chamorro</option>
+                        <option value="co">Corsican</option>
+                        <option value="cr">Cree</option>
+                        <option value="cu">Old Church Slavonic</option>
+                        <option value="cv">Chuvash</option>
+                        <option value="cy">Welsh</option>
+                        <option value="da">Danish</option>
+                        <option value="de">German</option>
+                        <option value="dv">Dhivehi</option>
+                        <option value="ee">Ewe</option>
+                        <option value="el">Greek</option>
+                        <option value="en">English</option>
+                        <option value="eo">Esperanto</option>
+                        <option value="es">Spanish</option>
+                        <option value="et">Estonian</option>
+                        <option value="eu">Basque</option>
+                        <option value="fa">Persian</option>
+                        <option value="ff">Fulah</option>
+                        <option value="fi">Finnish</option>
+                        <option value="fj">Fijian</option>
+                        <option value="fo">Faroese</option>
+                        <option value="fr">French</option>
+                        <option value="ga">Irish</option>
+                        <option value="gd">Scottish Gaelic</option>
+                        <option value="gl">Galician</option>
+                        <option value="gn">Guarani</option>
+                        <option value="gu">Gujarati</option>
+                        <option value="gv">Manx</option>
+                        <option value="ha">Hausa</option>
+                        <option value="he">Hebrew</option>
+                        <option value="hi">Hindi</option>
+                        <option value="ho">Hiri Motu</option>
+                        <option value="hr">Croatian</option>
+                        <option value="ht">Haitian Creole</option>
+                        <option value="hu">Hungarian</option>
+                        <option value="hy">Armenian</option>
+                        <option value="hz">Herero</option>
+                        <option value="ia">Interlingua</option>
+                        <option value="id">Indonesian</option>
+                        <option value="ie">Interlingue</option>
+                        <option value="ig">Igbo</option>
+                        <option value="ii">Sichuan Yi</option>
+                        <option value="ik">Inupiaq</option>
+                        <option value="io">Ido</option>
+                        <option value="is">Icelandic</option>
+                        <option value="it">Italian</option>
+                        <option value="iu">Inuktitut</option>
+                        <option value="ja">Japanese</option>
+                        <option value="jv">Javanese</option>
+                        <option value="ka">Georgian</option>
+                        <option value="kg">Kongo</option>
+                        <option value="ki">Kikuyu</option>
+                        <option value="kj">Kuanyama</option>
+                        <option value="kk">Kazakh</option>
+                        <option value="kl">Kalaallisut</option>
+                        <option value="km">Khmer</option>
+                        <option value="kn">Kannada</option>
+                        <option value="ko">Korean</option>
+                        <option value="kr">Kanuri</option>
+                        <option value="ks">Kashmiri</option>
+                        <option value="ku">Kurdish</option>
+                        <option value="kv">Komi</option>
+                        <option value="kw">Cornish</option>
+                        <option value="ky">Kyrgyz</option>
+                        <option value="la">Latin</option>
+                        <option value="lb">Luxembourgish</option>
+                        <option value="lg">Ganda</option>
+                        <option value="li">Limburgish</option>
+                        <option value="ln">Lingala</option>
+                        <option value="lo">Lao</option>
+                        <option value="lt">Lithuanian</option>
+                        <option value="lu">Luba-Katanga</option>
+                        <option value="lv">Latvian</option>
+                        <option value="mg">Malagasy</option>
+                        <option value="mh">Marshallese</option>
+                        <option value="mi">Maori</option>
+                        <option value="mk">Macedonian</option>
+                        <option value="ml">Malayalam</option>
+                        <option value="mn">Mongolian</option>
+                        <option value="mo">Moldovan</option>
+                        <option value="mr">Marathi</option>
+                        <option value="ms">Malay</option>
+                        <option value="mt">Maltese</option>
+                        <option value="my">Burmese</option>
+                        <option value="na">Nauru</option>
+                        <option value="nb">Norwegian Bokmål</option>
+                        <option value="nd">North Ndebele</option>
+                        <option value="ne">Nepali</option>
+                        <option value="ng">Ndonga</option>
+                        <option value="nl">Dutch</option>
+                        <option value="nn">Norwegian Nynorsk</option>
+                        <option value="no">Norwegian</option>
+                        <option value="nr">South Ndebele</option>
+                        <option value="nv">Navajo</option>
+                        <option value="ny">Nyanja</option>
+                        <option value="oc">Occitan</option>
+                        <option value="oj">Ojibwe</option>
+                        <option value="om">Oromo</option>
+                        <option value="or">Odia</option>
+                        <option value="os">Ossetian</option>
+                        <option value="pa">Punjabi</option>
+                        <option value="pi">Pali</option>
+                        <option value="pl">Polish</option>
+                        <option value="pm">Saint Pierre and Miquelon</option>
+                        <option value="pn">Pitcairn</option>
+                        <option value="ps">Pashto</option>
+                        <option value="pt">Portuguese</option>
+                        <option value="qu">Quechua</option>
+                        <option value="rm">Romansh</option>
+                        <option value="rn">Kirundi</option>
+                        <option value="ro">Romanian</option>
+                        <option value="ru">Russian</option>
+                        <option value="rw">Kinyarwanda</option>
+                        <option value="sa">Sanskrit</option>
+                        <option value="sc">Sardinian</option>
+                        <option value="sd">Sindhi</option>
+                        <option value="se">Northern Sami</option>
+                        <option value="sg">Sango</option>
+                        <option value="si">Sinhalese</option>
+                        <option value="sk">Slovak</option>
+                        <option value="sl">Slovenian</option>
+                        <option value="sm">Samoan</option>
+                        <option value="sn">Shona</option>
+                        <option value="so">Somali</option>
+                        <option value="sq">Albanian</option>
+                        <option value="sr">Serbian</option>
+                        <option value="ss">Swati</option>
+                        <option value="st">Southern Sotho</option>
+                        <option value="su">Sundanese</option>
+                        <option value="sv">Swedish</option>
+                        <option value="sw">Swahili</option>
+                        <option value="ta">Tamil</option>
+                        <option value="te">Telugu</option>
+                        <option value="tg">Tajik</option>
+                        <option value="th">Thai</option>
+                        <option value="ti">Tigrinya</option>
+                        <option value="tk">Turkmen</option>
+                        <option value="tl">Tagalog</option>
+                        <option value="tn">Tswana</option>
+                        <option value="to">Tongan</option>
+                        <option value="tr">Turkish</option>
+                        <option value="ts">Tsonga</option>
+                        <option value="tt">Tatar</option>
+                        <option value="tw">Twi</option>
+                        <option value="ty">Tahitian</option>
+                        <option value="ug">Uighur</option>
+                        <option value="uk">Ukrainian</option>
+                        <option value="ur">Urdu</option>
+                        <option value="uz">Uzbek</option>
+                        <option value="ve">Venda</option>
+                        <option value="vi">Vietnamese</option>
+                        <option value="vo">Volapük</option>
+                        <option value="wa">Walloon</option>
+                        <option value="wo">Wolof</option>
+                        <option value="xh">Xhosa</option>
+                        <option value="yi">Yiddish</option>
+                        <option value="yo">Yoruba</option>
+                        <option value="za">Zhuang</option>
+                        <option value="zu">Zulu</option>
+                    </select>
+                </div>
+                
+                <button class="btn btn-primary translate-btn" onclick="translateText()" aria-label="Translate text">
+                    <span class="material-symbols-rounded" aria-hidden="true">translate</span>
+                    Translate Now
+                </button>
+            </div>
+            
+            <div class="output-section">
+                <div class="section-title">
+                    <span class="material-symbols-rounded" aria-hidden="true">description</span>
+                    Translated Text
+                </div>
+                <textarea id="outputText" readonly placeholder="Translation will appear here..." aria-label="Translated text output"></textarea>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" onclick="copyText()" aria-label="Copy translated text">
+                        <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+                        Copy
+                    </button>
+                    <button class="btn btn-secondary" onclick="downloadText()" aria-label="Download translated text">
+                        <span class="material-symbols-rounded" aria-hidden="true">download</span>
+                        Download
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="loading" id="loadingIndicator" aria-hidden="true">
+            <div class="loading-spinner"></div>
+        </div>
+
+        <footer class="footer">
+            <p>Language Translate provides free, high-quality translation services for text, documents, and images.</p>
+            <p>Supported formats include PDF, DOC, DOCX, JPG, PNG, and plain text.</p>
+            <div class="footer-details">
+                <p>Created by: Aman Kumar Thakur</p>
+                <p>Email: <a href="mailto:er.thakuramankumar@gmail.com">er.thakuramankumar@gmail.com</a></p>
+                <p>Website: <a href="https://amankumarthakur.com.np" target="_blank" rel="noopener noreferrer">amankumarthakur.com.np</a></p>
+                <p>&copy; 2025 Aman Kumar Thakur. All rights reserved.</p>
+            </div>
+        </footer>
+    </main>
+    
+    <div class="notification" id="notification" aria-live="polite" aria-atomic="true">
+        <span class="material-symbols-rounded" aria-hidden="true">check_circle</span>
+        <span id="notificationText"></span>
+    </div>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "LinguaTranslate",
+        "url": "https://yourwebsite.com",
+        "description": "Free online language translator tool. Instantly translate text, documents, and images into multiple languages with high accuracy.",
+        "applicationCategory": "Utility",
+        "operatingSystem": "Web",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Text translation",
+            "Document translation",
+            "Image translation",
+            "Multiple language support",
+            "Download translations",
+            "Copy to clipboard"
+        ]
+    }
+    </script>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+            const themeIcon = document.getElementById("themeIcon");
+            
+            if (document.body.classList.contains("dark-mode")) {
+                themeIcon.textContent = "light_mode";
+                localStorage.setItem("theme", "dark");
+            } else {
+                themeIcon.textContent = "dark_mode";
+                localStorage.setItem("theme", "light");
+            }
+        }
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            const savedTheme = localStorage.getItem("theme");
+            if (savedTheme === "dark") {
+                document.body.classList.add("dark-mode");
+                document.getElementById("themeIcon").textContent = "light_mode";
+            }
+        });
+        
+        function translateText() {
+            let text = document.getElementById("inputText").value;
+            let targetLang = document.getElementById("targetLanguage").value;
+
+            if (!text.trim()) {
+                showNotification("Please enter or upload text first", "error");
+                return;
+            }
+
+            document.getElementById("loadingIndicator").style.display = "block";
+            
+            let url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`;
+
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    document.getElementById("outputText").value = data[0].map(item => item[0]).join("");
+                    document.getElementById("loadingIndicator").style.display = "none";
+                    showNotification("Translation completed successfully!");
+                })
+                .catch(error => {
+                    console.error("Translation Error:", error);
+                    document.getElementById("loadingIndicator").style.display = "none";
+                    showNotification("Translation failed. Please try again.", "error");
+                });
+        }
+
+        function readFile() {
+            let fileInput = document.getElementById("fileInput");
+            let file = fileInput.files[0];
+
+            if (!file) {
+                showNotification("Please select a file first", "error");
+                return;
+            }
+
+            document.getElementById("loadingIndicator").style.display = "block";
+            
+            let reader = new FileReader();
+            reader.onload = function () {
+                document.getElementById("inputText").value = reader.result;
+                document.getElementById("loadingIndicator").style.display = "none";
+                showNotification("File content extracted successfully!");
+            };
+            reader.onerror = function() {
+                document.getElementById("loadingIndicator").style.display = "none";
+                showNotification("Failed to read file. Please try again.", "error");
+            };
+            reader.readAsText(file);
+        }
+
+        document.getElementById("fileInput").addEventListener("change", function() {
+            readFile();
+        });
+
+        function copyText() {
+            let outputText = document.getElementById("outputText").value;
+            
+            if (!outputText.trim()) {
+                showNotification("No text to copy", "error");
+                return;
+            }
+            
+            navigator.clipboard.writeText(outputText)
+                .then(() => {
+                    showNotification("Copied to clipboard!");
+                })
+                .catch(err => {
+                    showNotification("Failed to copy text", "error");
+                    console.error("Copy failed: ", err);
+                });
+        }
+
+        function downloadText() {
+            let text = document.getElementById("outputText").value;
+            
+            if (!text.trim()) {
+                showNotification("No text to download", "error");
+                return;
+            }
+            
+            let blob = new Blob([text], { type: "text/plain" });
+            let link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "translated_text.txt";
+            link.click();
+            showNotification("Download started!");
+        }
+
+        function showNotification(message, type = "success") {
+            const notification = document.getElementById("notification");
+            const notificationText = document.getElementById("notificationText");
+            
+            notification.style.background = type === "success" ? "var(--success)" : "var(--accent)";
+            notificationText.textContent = message;
+            
+            notification.classList.add("show");
+            
+            setTimeout(() => {
+                notification.classList.remove("show");
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
